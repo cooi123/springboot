@@ -28,10 +28,7 @@ public class StudentController {
     }
 
     @PostMapping("/student")
-    public ResponseEntity<String> addStudent(@Valid @RequestBody Student student, Errors errors) {
-        if(errors.hasErrors()){
-            return new ResponseEntity(errors.getFieldErrors(), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<String> addStudent(@Valid @RequestBody Student student) {
         return new ResponseEntity(studentService.addStudent(student),HttpStatus.OK);
     }
 }
